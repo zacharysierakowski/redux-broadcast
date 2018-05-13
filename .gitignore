@@ -1,0 +1,7 @@
+*.log
+
+.yarn-cache
+.DS_STORE
+
+node_modules
+lib
