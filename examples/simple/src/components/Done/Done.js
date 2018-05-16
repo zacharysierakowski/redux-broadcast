@@ -9,11 +9,11 @@ const Done = props => {
         {todos.filter(todo => todo.done).map((todo, i) => (
           <li key={i}>
             {todo.name}{" "}
-            <button className="remove-item btn btn-default btn-xs pull-right">
-              <span
-                className="glyphicon glyphicon-remove"
-                onClick={() => removeTodo(todo.id)}
-              />
+            <button
+              className="remove-item btn btn-default btn-xs pull-right"
+              onClick={() => removeTodo(todo.id)}
+            >
+              <span className="glyphicon glyphicon-remove" />
             </button>
           </li>
         ))}

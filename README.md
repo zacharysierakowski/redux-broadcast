@@ -6,6 +6,8 @@ Broadcast redux actions to separate tabs and windows
 
 This package uses the [Broadcast Channel API](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API) and does not use local storage. See [caniuse.com](https://caniuse.com/#search=BroadcastChannel) to view current browser support.
 
+![Example](./examples/simple/simple_example.gif)
+
 ## Setup
 
 Add the reducers:
