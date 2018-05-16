@@ -2,16 +2,17 @@ import React from "react";
 import { render } from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunkMiddleware from "redux-thunk";
-import loggerMiddleware from "redux-logger";
-import broadcast, { broadcastMiddleware } from "redux-broadcast";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import broadcast, { middleware } from "redux-broadcast";
 
+import "./App.css";
 import App from "./components/App";
-import rootReducer from "./reducers";
+import rootReducer from "./redux/reducers";
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunkMiddleware, ...broadcastMiddleware, loggerMiddleware)
+  applyMiddleware(thunk, ...middleware, logger)
 );
 
 broadcast(store);

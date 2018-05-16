@@ -5743,7 +5743,7 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-"redux-broadcast@file:./../../":
+"redux-broadcast@file:../..":
   version "0.0.0-development"
   dependencies:
     dispatch-hijack "^1.0.0"

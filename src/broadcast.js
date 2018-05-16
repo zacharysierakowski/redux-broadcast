@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import broadcastReducers from "./redux/reducers";
-import getMiddleware from "./redux/middleware";
 
+import getReducers from "./redux/reducers";
+import getMiddleware from "./redux/middleware";
 import {
   INSTANCE_APP,
   INSTANCE_REGISTER,
@@ -10,18 +10,30 @@ import {
 } from "./redux/modules/instances/actions";
 
 const channel = new BroadcastChannel("redux-broadcast");
-export const combineReducersWithBroadcast = reducers => {
-  return combineReducers({
-    ...reducers,
-    broadcast: broadcastReducers
-  });
+export const reducers = {
+  broadcast: getReducers
 };
 
-export const broadcastMiddleware = getMiddleware(channel);
+export const middleware = getMiddleware(channel);
 
-export default (store, app = "app") => {
+const defaultBroadcastOptions = {
+  app: "app",
+  autoConnect: true
+};
+export default (store, broadcastOptions = defaultBroadcastOptions) => {
+  const options = {
+    ...defaultBroadcastOptions,
+    ...broadcastOptions
+  };
+  const { app, autoConnect } = options;
+
   channel.onmessage = ({ data: action }) => {
     const { connected } = store.getState().broadcast.instances;
+
+    if (autoConnect) {
+      store.dispatch(action);
+      return;
+    }
 
     const connectedKeys = Object.keys(connected).reduce((keys, k) => {
       keys = keys.concat(connected[k]);

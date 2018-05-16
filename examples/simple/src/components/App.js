@@ -1,14 +1,19 @@
 import React from "react";
 import { broadcasted } from "redux-broadcast";
-import Footer from "./Footer";
-import AddTodo from "../containers/AddTodo";
-import VisibleTodoList from "../containers/VisibleTodoList";
+
+import Todo from "./Todo/index";
+import Done from "./Done/index";
 
 const App = () => (
-  <div>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
+  <div className="container">
+    <div className="row">
+      <div className="col-md-6">
+        <Todo />
+      </div>
+      <div className="col-md-6">
+        <Done />
+      </div>
+    </div>
   </div>
 );
 
